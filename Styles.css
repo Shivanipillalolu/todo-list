@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f2f2f2;
+}
+
+h1 {
+    color: #333;
+}
+
+.container {
+    width: 300px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input {
+    width: 80%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 8px 15px;
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #eee;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+}
+
+/* Animation for adding task */
+.task-enter {
+    transform: translateY(-10px);
+    opacity: 0;
+}
+
+.task-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Animation for removing task */
+.task-exit {
+    transform: scale(0.8);
+    opacity: 0;
+}
+
+.delete-btn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+input {
+    background-color: white !important;
+  }
+  
+  input:-webkit-autofill {
+    background-color: white !important;
+    box-shadow: 0 0 0px 1000px white inset !important;
+  }
+  
+
+
+
+
+
+
+
+
