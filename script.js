@@ -16,45 +16,39 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Function to add a task
-    function addTask(text) {
-        const taskItem = document.createElement("div");
-        taskItem.classList.add("task");
+    // Function to add a task to the list
+    function addTask(taskText) {
+        const li = document.createElement("li");
+        li.className = "task-item";
+        li.textContent = taskText;
 
-        taskItem.innerHTML = `
-            <span>${text}</span>
-            <button class="delete">❌</button>
-        `;
-
-        taskList.appendChild(taskItem);
-
-        // Delete task event
-        taskItem.querySelector(".delete").addEventListener("click", function () {
-            taskItem.remove();
+        // Add delete button to each task
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "❌";
+        deleteButton.className = "delete-btn";
+        deleteButton.addEventListener("click", function () {
+            li.remove();
             saveTasks();
         });
 
-        saveTasks();
+        li.appendChild(deleteButton);
+        taskList.appendChild(li);
     }
 
-    // Save tasks in local storage
+    // Function to save tasks to local storage
     function saveTasks() {
         const tasks = [];
-        document.querySelectorAll(".task span").forEach(task => {
-            tasks.push(task.textContent);
+        document.querySelectorAll(".task-item").forEach(task => {
+            tasks.push(task.textContent.replace("❌", "").trim());
         });
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }
 
-    // Load tasks from local storage
+    // Function to load tasks from local storage
     function loadTasks() {
-        const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-        savedTasks.forEach(task => addTask(task));
+        const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        tasks.forEach(task => addTask(task));
     }
 });
-
-
-
-
 
 
